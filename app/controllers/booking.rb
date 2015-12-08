@@ -8,13 +8,12 @@ post '/posts/:postid/book' do
 		elsif book.user_id == booked.user_id
 			book_id.destroy
 		end
+	elsif booked.status == 1
+			book_id = Booking.find_by(user_id: session[:user_id])
+			book_id.destroy
+			flash[:booked] = "Too Bad, Property unavailable at the moment."
 	end
-	if booked.status == 1
-		book_id = Booking.find_by(user_id: session[:user_id])
-		book_id.destroy
-		flash[:booked] = "Too Bad, Property unavailable at the moment."
 		redirect "/posts/#{params[:postid]}"
-	end
 end
 
 # delete '/posts/:postid/book/:bookid' do

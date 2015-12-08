@@ -4,10 +4,10 @@
 <h3>Monthly Rental: <%= @post.monthly_rental %></h3><br>
 <h3>Preference: <%= @post.preference %></h3><br>
 <h3>Extra: <%= @post.extra %></h3><br>
-<% if current_user.id == @post.user_id %>
 	<% if flash[:booked] %>
 	<%= flash[:booked] %>
 	<% end %>
+<% if current_user.id != @post.user_id %>
 <form action="/posts/<%= @post.id %>/book" method="POST">
 	<input type="submit" value="Book This Property">
 </form>
@@ -15,11 +15,13 @@
 	<input type="submit" value="Cancel Booking">
 </form>
 <% end %>
+<% if current_user.id == @post.user_id %>
 <a href="/posts/<%= @post.id %>/edit"><button>Edit Post</button></a>
 <form action="/posts/<%= @post.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete">
 </form>
+<% end %>
 <form action="/posts/<%= @post.id %>/comment" method="POST">
 	<label>Comment: </label>
 	<textarea type="text" name="input"></textarea><br>
