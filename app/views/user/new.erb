@@ -1,0 +1,20 @@
+<h1>Create New User</h1>
+
+<% if logged_in? %>
+<h3>You are logged in as <%= current_user.name %></h3>
+<a href="/">Home Page</a><br>
+<a href="logout">Log Out</a>
+<% else %>
+<% if flash[:email_taken] %>
+	<h3><%= flash[:email_taken] %></h3>
+<% end %> 
+<form action="/users" method="POST">
+	<label>Name: </label>
+	<input type="text" name="name"><br>
+	<label>Email: </label>
+	<input type="email" name="email"><br>
+	<label>Password: </label>
+	<input type="password" name="password"><br>
+	<input type="submit" value="Create user">
+</form>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Login</h1>
+
+<% if flash[:id] %>
+	<%= flash[:id] %><br>
+	<a href="users/new"> Register here </a>
+	<br><br>
+<% end %> 
+	<% if flash[:pw] %>
+	<%= flash[:pw] %>
+	<br><br>
+<% end %>
+<form action="/users/login" method="POST">
+	<label>Email: </label>
+	<input type="email" name="email"><br>
+	<label>Password: </label>
+	<input type="password" name="password"><br>
+	<input type="submit" value="Login">
+</form>

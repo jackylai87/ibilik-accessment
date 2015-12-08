@@ -1,0 +1,32 @@
+<h1>User Profile</h1>
+
+Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+<% if logged_in? %>
+<% if current_user.id == @user.id %>
+<a href="/"><button>Home Page</button></a><br>
+<a href="/posts/new"><button>Create Post</button></a><br>
+<a href="/users/<%= @user.id %>/edit"><button>Edit profile</button></a>
+<form action="/users/<%= @user.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
+<a href="/users/logout"><button>Logout</button></a><br><br>
+
+<% end %>
+<% end %>
+Properties Post by: <%= @user.name %>
+<ul>
+	<% @user.posts.each do |post| %>
+		<li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+	<% end %>
+</ul>
+
+Booking by: <%= @user.name %>
+<ul>
+	<% @user.bookings.each do |booking| %>
+		<li>Property Post: <a href='/posts/<%= booking.post_id %>'><%= booking.post.title %></a></li>
+	<% end %>
+</ul>
+
+

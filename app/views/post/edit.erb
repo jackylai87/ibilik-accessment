@@ -1,0 +1,16 @@
+<h1>Edit Post</h1>
+
+<form action="/posts/<%= @post.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>Title: </label>
+	<input type="text" name="title"><br>
+	<label>Description: </label>
+	<textarea type="text" name="description" placeholder="Such as Location: "></textarea><br>
+	<label>Monthly Rental: </label>
+	<input type="text" name="monthly_rental" value="RM "><br>
+	<label>Preference: </label>
+	<input type="text" name="preference" value="Any"><br>
+	<label>Extra: </label>
+	<input type="text" name="extra"><br>
+	<input type="submit" value="Update Post">
+</form>

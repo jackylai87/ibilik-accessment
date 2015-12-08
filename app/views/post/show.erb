@@ -1,0 +1,43 @@
+<h1><%= @post.title %><h1>
+<h4>Posted by <%= @post.user.name%></h4>
+<h3>Description: <%= @post.description %></h3><br>
+<h3>Monthly Rental: <%= @post.monthly_rental %></h3><br>
+<h3>Preference: <%= @post.preference %></h3><br>
+<h3>Extra: <%= @post.extra %></h3><br>
+<% if current_user.id == @post.user_id %>
+	<% if flash[:booked] %>
+	<%= flash[:booked] %>
+	<% end %>
+<form action="/posts/<%= @post.id %>/book" method="POST">
+	<input type="submit" value="Book This Property">
+</form>
+<form action="/posts/<%= @post.id %>/book" method="POST">
+	<input type="submit" value="Cancel Booking">
+</form>
+<% end %>
+<a href="/posts/<%= @post.id %>/edit"><button>Edit Post</button></a>
+<form action="/posts/<%= @post.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
+<form action="/posts/<%= @post.id %>/comment" method="POST">
+	<label>Comment: </label>
+	<textarea type="text" name="input"></textarea><br>
+	<input type="submit" value="Submit Comment">
+</form>
+<% @comment.each_with_index do |comment,index| %>
+<%= index + 1%>) <%= comment.input %> (by <%= comment.user.name %>)<br><br>
+<% if current_user.id == comment.user_id %>
+<form action="/posts/<%= @post.id %>/comment/<%= comment.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>Edit Comment: </label>
+	<input type="text" name="input" placeholder="<%= comment.input%>"><br>
+	<input type="submit" value="Update Answer">
+</form>
+<form action="/posts/<%= @post.id %>/comment/<%= comment.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
+<% end %>
+<% end %><br>
+<a href="/">Main Page</a>
