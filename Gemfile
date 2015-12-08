@@ -29,6 +29,15 @@ group :development, :test do
 	gem 'shotgun'
 end
 
+#Adding bcrypt to encrypt user's password
+gem 'bcrypt'
+
+#Adding byebug to do byebug
+gem 'byebug'
+
+#Adding Sinatra-Flash to flash error message
+gem 'sinatra-flash'
+
 group :production do
 	# Heroku
 	# ==================

@@ -17,6 +17,11 @@ require 'logger'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
+	# Bcrypt, Byebug and sinatra-flash
+require 'bcrypt'
+require 'byebug'
+require 'sinatra/flash'
+
 	# embedded ruby
 require 'erb'
 require 'uri'
