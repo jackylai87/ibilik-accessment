@@ -5,8 +5,10 @@ post '/posts/:postid/book' do
 		booked = Booking.find_by(status: 1, post_id: params[:postid])
 		if book_id.nil?
 			book.save
+			flash[:ok] = "Booking Successful"
 		elsif book.user_id == booked.user_id
 			book_id.destroy
+			flash[:no] = "Too Bad"
 		end
 	elsif booked.status == 1
 			book_id = Booking.find_by(user_id: session[:user_id])
