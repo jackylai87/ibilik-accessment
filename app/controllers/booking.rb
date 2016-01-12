@@ -8,7 +8,7 @@ post '/posts/:postid/book' do
 			flash[:ok] = "Booking Successful"
 		elsif book.user_id == booked.user_id
 			book_id.destroy
-			flash[:no] = "Too Bad"
+			flash[:no] = "So sad to see you go"
 		end
 	elsif booked.status == 1
 			book_id = Booking.find_by(user_id: session[:user_id])

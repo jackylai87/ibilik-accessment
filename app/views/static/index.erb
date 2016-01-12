@@ -1,11 +1,7 @@
-<h1>Welcome to iRoom</h1>
 <% if logged_in? %>
-	<h2>Good day, <%= current_user.name %></h2>
-<% else %>
-	<a href="/users">Login</a>
-	<a href="/users/new">Sign up</a>
+	<h2 >Good day, <%= current_user.name %></h2>
 <% end %>
 <u><h1>Properties Available</h1></u>
 <% @all.each_with_index do |x, index| %>
-	<h2><%= index + 1 %>) <a href="/posts/<%= x.id %>"><%= x.title %></a> (Posted by: <a href="/users/<%= x.user.id %>"><%= x.user.name %>)</a></h2>
+	<h2><%= index + 1 %>) <a class="link-color" href="/posts/<%= x.id %>"><%= x.title %></a> (Posted by: <a class="link-color" href="/users/<%= x.user.id %>"><%= x.user.name %>)</a></h2>
 <% end %>

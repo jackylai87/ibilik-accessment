@@ -1,5 +1,6 @@
 <html>
 <head>
+	<h1> <a class="home-link-color" href="/">Welcome to iRoom </a></h1>
 	<link rel="stylesheet" type="text/css" href="/css/application.css">
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="/js/application.js"></script>
@@ -7,8 +8,16 @@
 </head>
 <body>
 	<% if logged_in? %>
-		<div style="position: absolute; right: 10px; top: 15px;">Sign in as :<a href="/users/<%= current_user.id %>"><%= current_user.name %></a></div>
+		<div style="position: absolute; right: 10px; top: 15px;">Sign in as :<a class="link-color" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+		<a href="/users/logout"><button>Logout</button></a></div>
+	<% else %>
+		<div style="position: absolute; right: 30px; top: 15px;">
+			<a href="/users"><button font: bold 20px Arial>Login</button></a>
+		<a href="/users/new"><button>Sign up</button></a></div>
 	<% end %>
 	<%= yield %>
 </body>
+<footer>
+	<div class="font" style="position: absolute; bottom: 30px;">All Right Reserved: Jacky®</div>
+</footer>
 </html>

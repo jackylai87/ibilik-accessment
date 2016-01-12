@@ -1,0 +1,16 @@
+.home-link-color {
+	color: black;
+}
+
+.link-color {
+	color: blue;
+}
+
+.font {
+	position:absolute;
+  	left:0;
+  	right:0;
+  	text-align: center;
+	font-size: 25px;
+	font-family: "NK_Monotype Corsiva";
+}
